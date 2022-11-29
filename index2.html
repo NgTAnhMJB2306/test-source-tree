@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BEM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./main2.css">
+</head>
+
+<body>
+    <!-- Success -->
+    <div id="toast">
+        <!-- <div class="toast toast--success">
+            <div class="toast__icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="toast-body">
+                <h3 class="toast__title">Success</h3>
+                <p class="toast__msg">Hàng loạt điểm bất thường liên quan đến hoạt động.</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div> -->
+    </div>
+
+    <div>
+        <button class="btn btn--size-s btn--success">Show Success Toast</button>
+        <button class="btn btn--size-s btn--warn btn--disable">OK</button>
+        <button class="btn btn--size-s btn--danger">Show Error Toast</button>
+    </div>
+
+    <script>
+        // Toast Function
+        function toast({
+            title = '',
+            message = '',
+            type = 'info',
+            duration = '3000'
+        }) {
+            const main = document.getElementById('toast');
+            if (main) {
+                const toast = document.createElement('div');
+                toast.classList.add('toast', `toast--${type}`);
+                toast.innerHTML = `
+                    <div class="toast__icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="toast-body">
+                        <h3 class="toast__title">${title}</h3>
+                        <p class="toast__msg">${message}</p>
+                    </div>
+                    <div class="toast__close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                `;
+                main.appendChild(toast);
+            }
+        }
+
+        toast({
+            title: 'Success',
+            message: 'Hàng loạt điểm bất thường liên quan đến hoạt động.',
+            type: 'success',
+            duration: 3000
+        })
+    </script>
+
+</body>
+
+</html>
